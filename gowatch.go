@@ -69,6 +69,8 @@ func NewWatcher(paths []string, files []string) {
 			case err := <-watcher.Error:
 				log.Errorf("%v", err)
 				log.Warnf(" %s\n", err.Error()) // No need to exit here
+			default:
+				time.Sleep(1 * time.Second)
 			}
 		}
 	}()
